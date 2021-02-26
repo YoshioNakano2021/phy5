@@ -1,0 +1,23 @@
+---
+title: "README.Rmd"
+author: "YNakano"
+date: "2/24/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Phy5
+
+Phy5 is a generator of phylogenetic tree based on genome-wide comparisons of pentamer profiles.
+It is written in R using the Shiny, Biostrings, ape and pvclust libraries.
+
+Phy5 online version is can be used at http://nakano.no-ip.org:3838/phy5/phy5/ or 
+https://phy5.shinyapps.io/Phy5R/.
+
+Upload files of fasta-formated DNA sequences, one file for one strain, and Phy5 
+calculates pentamaer profiles.
+The pentanucleotide profiles can be downloaded as csv files in raw numbers or proportional numbers,
+The resultant phylogenetic tree can be downloaded as a pdf file.

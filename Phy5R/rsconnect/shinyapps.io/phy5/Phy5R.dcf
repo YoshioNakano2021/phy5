@@ -1,0 +1,12 @@
+name: Phy5R
+title: Phy5R
+username:
+account: phy5
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3675885
+bundleId: 4254684
+url: https://phy5.shinyapps.io/Phy5R/
+when: 1613970621.38571
+asMultiple: FALSE
+asStatic: FALSE

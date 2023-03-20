@@ -40,7 +40,7 @@ To run Phy5cli for a single fasta file, run
 
 `$python3 Phy5cli.py -f fasta.fna -s manhattan -g ward`
 
-- `fasta.fna`:Your input single FASTA file.
+- `fasta.fna`:Your input single FASTA file. If you use another filename extention, "/*.fna" at the line 100 can be changed.
 - `manhattan`:Distance method. It should be chosen one out of 'euclidean','manhattan', 'maximum', 'canberra', and 'binary'.
 - `ward`: Agglomeration method. It should be chosen one out of 'ward', 'average', 'single', 'complete', 'mcquitty', 'median', and 'centroid'.
 

@@ -29,15 +29,19 @@ shinyServer(function(input, output) {
             seqname <- sub(' chromosome, complete genome','',seqname)
             seqname <- sub(', complete genome','',seqname)
             seqname <- sub(' genome assembly, chromosome: I','',seqname)
-            seqname <- sub(', complete geome','',seqname)
             seqname <- sub(' complete genome','',seqname)
             seqname <- sub(', complete sequence','',seqname)
             seqname <- sub(' genome assembly','',seqname)
             seqname <- sub(', chromosome','',seqname)
             seqname <- sub(' chromosome','',seqname)
+            seqname <- sub(' whole genome','',seqname)
             seqname <- sub(' whole genome shotgun sequence','',seqname)
-            seqname <- sub(' ','_',seqname)
-            seqname <- sub(',','_',seqname)
+            seqname <- gsub(' ','_',seqname)
+            seqname <- gsub(',','_',seqname)
+            if (grepl("_NODE_",seqname)){
+              sqnms <- strsplit(seqname, split="_NODE_")
+              seqname <- sqnms[[1]][1]
+            }
             output$fnaname <- renderText(seqname)
             out5 <- oligonucleotideFrequency(dnaseq, width=5)
             out5sum <- colSums(out5)

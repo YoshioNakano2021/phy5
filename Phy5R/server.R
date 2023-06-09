@@ -35,6 +35,7 @@ shinyServer(function(input, output) {
             seqname <- sub(' genome assembly','',seqname)
             seqname <- sub(', chromosome','',seqname)
             seqname <- sub(' chromosome','',seqname)
+            seqname <- sub(' whole genome shotgun sequence','',seqname)
             seqname <- sub(' ','_',seqname)
             seqname <- sub(',','_',seqname)
             output$fnaname <- renderText(seqname)

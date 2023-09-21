@@ -97,8 +97,11 @@ if args.f != None:
 elif args.d != None:
     is_dir = os.path.isdir(args.d)
     if is_dir:
-        path = args.d + "/*.fna"
-        fastas = glob.glob(path)
+        path1 = args.d + "/*.fasta"
+        path2 = args.d + "/*.fna"
+        fastas1 = glob.glob(path1)
+        fastas2 = glob.glob(path2)
+        fastas = fastas1 + fastas2
         bstrings = importr("Biostrings")
         
         seqnames = []
@@ -108,6 +111,12 @@ elif args.d != None:
                 seqname = f.readlines()[0]
             seqname = seqname.replace(' ','_')
             seqname = seqname.replace(',','_')
+            seqname = seqname.replace('_chromosome','')
+            seqname = seqname.replace('_complete','')
+            seqname = seqname.replace('_partial','')
+            seqname = seqname.replace('_genome','')
+            seqname = seqname.replace('_sequence','')
+            seqname = seqname.replace('whole_shotgun','')
             seqname = seqname.replace('>','')
             seqname = seqname.replace('\n','')
             seqnames.append(seqname)
@@ -176,9 +185,9 @@ dist_df <- data.frame(dist.m)
 write.csv(dist_df, "DistTable.csv")
 cluster <- hclust(dist, method=am)
 cluster.nwk <- hc2Newick(cluster)
-write(cluster.nwk, file = "Tree.nwk")
+write(cluster.nwk, file = "Tree_UPGMA.nwk")
 tcsv <- t(rprop_df)
-btsv <- pvclust(tcsv, method.dist="manhattan",nboot=1000, method.hclust="ward.D2",r=seq(.5,1,by=.1))
+btsv <- pvclust(tcsv, method.dist=dm,nboot=1000, method.hclust=am,r=seq(.5,1,by=.1))
 boot <- round((btsv$edges$bp)*100)
     
 pdfname <- paste("tree5_",dm,"-",am,".pdf", sep="")

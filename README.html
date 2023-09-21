@@ -1,117 +1,418 @@
-<!doctype html>
-<html >
+<!DOCTYPE html>
+<html>
 <head>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!--[if lt IE 9]>
-                <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-        <![endif]-->
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="Content-Style-Type" content="text/css" />
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
-    <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
 
-    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
 
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-    <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
-    <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
-    <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
 
-    <!-- <link href="menu/css/skins/blue.css" rel="stylesheet" type="text/css" /> -->
-    <!-- <link href="menu/css/skins/graphite.css" rel="stylesheet" type="text/css" /> -->
-    <!-- <link href="menu/css/skins/grey.css" rel="stylesheet" type="text/css" /> -->
-  
-    <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-        
-  
-    <!-- <script src="script.js"></script> -->
-  
-    <!-- <script src="jquery.sticky-kit.js "></script> -->
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.cookie.js'></script>
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.hoverIntent.minified.js'></script>
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.dcjqaccordion.2.7.min.js'></script>
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
 
-    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/blue.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/graphite.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
-    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
-  
-    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
-    <meta name="generator" content="pandoc" />
-  <title>README</title>
-  <style type="text/css">code{white-space: pre;}</style>
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///Users/ynakano/.markdown/md.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </head>
 <body>
-
-    
-    <div class="container">
-    <div class="row">
-            <div class="span12">
-
-      
-      <h1
-id="phy-5-a-generator-of-phylogenetic-tree-based-on-genome-wide-comparisons-of-pentamer-profiles.">Phy
-5, a generator of phylogenetic tree based on genome-wide comparisons of
-pentamer profiles.</h1>
-<h3 id="phy5">Phy5</h3>
-<p>Phy5 is a Shiny web applicaion, a generator of phylogenetic tree
-based on genome-wide comparisons of pentamer profiles. It is written in
-R using the Shiny, Biostrings, ape and pvclust libraries.</p>
-<p>Phy5 online version is can be used at
-http://nakano.no-ip.org:3838/phy5/phy5/ or
-https://phy5.shinyapps.io/Phy5R/.</p>
-<p>Upload files of fasta-formated DNA sequences, one file for one
-strain, and Phy5 calculates pentamaer profiles. The pentanucleotide
-profiles can be downloaded as csv files in raw numbers or proportional
-numbers, The resultant phylogenetic tree can be downloaded as a pdf
-file.</p>
-<h3 id="phy5cli">Phy5cli</h3>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="phy-5-a-generator-of-phylogenetic-tree-based-on-genome-wide-comparisons-of-pentamer-profiles">Phy 5, a generator of phylogenetic tree based on genome-wide comparisons of pentamer profiles</h1>
+<h2 id="phy5">Phy5</h2>
+<p>Phy5 is a Shiny web applicaion, a generator of phylogenetic tree based on genome-wide comparisons of pentamer profiles.
+It is written in R using the Shiny, Biostrings, ape and pvclust libraries.</p>
+<p>Phy5 online version is can be used at <a href="http://nakano.no-ip.org:3838/phy5/phy5/">http://nakano.no-ip.org:3838/phy5/phy5/</a> or <a href="https://phy5.shinyapps.io/Phy5R/">https://phy5.shinyapps.io/Phy5R/</a>.</p>
+<p>Upload files of fasta-formated DNA sequences, one file for one strain, and Phy5 calculates pentamaer profiles.
+The pentanucleotide profiles can be downloaded as csv files in raw numbers or proportional numbers.<br>
+The resultant phylogenetic tree can be downloaded as a pdf file.</p>
+<h2 id="phy5cli">Phy5cli</h2>
 <p>Phy5cli is the command line version of Phy5.</p>
-<p>Phy5cli is a python script including R function with rpy2 library. It
-requires python 3 with the following libraries: numpy, pandas, rpy2, R
-(version &gt;=4.0) and its packages: importr, ocalconverter, py2rpy,
-rpy2py, pandas2ri, numpy2ri, Biostrings, ape, pvclust, ctc.</p>
-<p>Phy5cli is the executable file that works on Linux platform but R and
-the packages, Biostrings, ape, and pvclust, are required. The file is
-saved in the $PATH and Phy5cli executable without needing to specify the
-full path to the file.</p>
-<p>Phy5cli can operate on a single FASTA-formatted file, treating each
-sequence as a sample.</p>
+<p>Phy5cli is a python script including R function with rpy2 library.  It requires python 3 with the following libraries:
+numpy,<br>
+pandas,<br>
+rpy2,
+R (version &gt;=4.0) and its packages: importr,<br>
+ocalconverter,<br>
+py2rpy,<br>
+rpy2py,<br>
+pandas2ri,<br>
+numpy2ri,<br>
+Biostrings,<br>
+ape,<br>
+pvclust,<br>
+ctc.</p>
+<p>Phy5cli is the executable file that works on Linux platform but R and the packages, Biostrings, ape, and pvclust, are required.  The file is saved in the $PATH and Phy5cli executable without needing to specify the full path to the file.</p>
+<p>Phy5cli can operate on a single FASTA-formatted file, treating each sequence as a sample.</p>
 <p>To run Phy5cli for a single fasta file, run</p>
 <p><code>$python3 Phy5cli.py -f fasta.fna -s manhattan -g ward</code></p>
 <ul>
-<li><code>fasta.fna</code>:Your input single FASTA file. If you use
-another filename extention, “/*.fna” at the line 100 can be
-changed.</li>
-<li><code>manhattan</code>:Distance method. It should be chosen one out
-of ‘euclidean’,‘manhattan’, ‘maximum’, ‘canberra’, and ‘binary’.</li>
-<li><code>ward</code>: Agglomeration method. It should be chosen one out
-of ‘ward’, ‘average’, ‘single’, ‘complete’, ‘mcquitty’, ‘median’, and
-‘centroid’.</li>
+<li><code>fasta.fna</code>: Your input single FASTA file. If you use another filename extention, &quot;/*.fna&quot; at the line 100 can be changed.</li>
+<li><code>manhattan</code>: Distance method. It should be chosen one out of 'euclidean','manhattan', 'maximum', 'canberra', and 'binary'.</li>
+<li><code>ward</code>: Agglomeration method. It should be chosen one out of 'ward', 'average', 'single', 'complete', 'mcquitty', 'median', and 'centroid'.</li>
 </ul>
 <p>To run the executable version, run</p>
 <p><code>$Phy5cli -f fasta.fna -s manhattan -g ward</code></p>
-<p>To run Phy5cli for on a set of FASTA-formatted files, treating each
-file as a sample, run</p>
+<p>To run Phy5cli for on a set of FASTA-formatted files, treating each file as a sample, run</p>
 <p><code>$python3 Phy5cli.py -d fastafolder -s manhattan -g ward</code></p>
 <ul>
-<li><code>fastafolder</code>:The directory containing your input fasta
-files.</li>
+<li><code>fastafolder</code>: The directory containing your input fasta files.</li>
 </ul>
-<p>Phy5cli produces two csv tabls of frequencies of penta nucleotides in
-each sequence in sigle fasta file or each file in a directory and
-proportional values of the frequencies, and the phylogenetic tree whose
-file name containing distance method and agglomeration method.</p>
-            </div>
-    </div>
-  </div>
-  <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+<p>Phy5cli produces two csv tabls of frequencies of penta nucleotides in each sequence in sigle fasta file or each file in a directory and proportional values of the frequencies, and the phylogenetic tree whose file name containing distance method and agglomeration method.</p>
+<h2 id="changelog">Changelog</h2>
+<p>September 21, 2023</p>
+<ul>
+<li>The Newick file produced by phy5cli is clustered with UPGMA (unweighted pair group method with arithmetic mean). Thus, only when <code>average</code> is used as an agglomeration method, the phylogenetic tree produced by phy5 agrees with the phylogenetic tree obtained from the newick file using a program for displaying phylogenies, such as TreeView. The file name of newick file produced by phy5 has been changed to <code>Tree_UPGMA.nwk</code> from Tree.nwk.</li>
+<li>The following words are removed from leaf names in phylogenetic tree, or names of genomes: <code>chromosome</code>, <code>complete</code>, <code>partial</code>, <code>genome</code>, <code>sequence</code>, <code>whole shotgun</code>.</li>
+<li>The filename extention <code>fasta</code> is also acceptable for input fasta files.</li>
+</ul>
 
 </body>
 </html>
